@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  email_management_api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: email_management_api
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      HIBERNATE_DIALECT: ${HIBERNATE_DIALECT}
+      HIBERNATE_DDL_AUTO: ${HIBERNATE_DDL_AUTO}
+      FLYWAY_ENABLED: ${FLYWAY_ENABLED}
+      FLYWAY_LOCATIONS: ${FLYWAY_LOCATIONS}
+      FLYWAY_BASELINE_ON_MIGRATE: ${FLYWAY_BASELINE_ON_MIGRATE}
+    networks:
+      - email_management_network
+    volumes:
+      - email_management_api:/app
+    depends_on:
+      - email_management_db
+
+  email_management_db:
+    image: postgres:latest
+    container_name: email_management_db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: email_management
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../src/main/resources/db/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - email_management_network
+
+networks:
+  email_management_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  email_management_api:
