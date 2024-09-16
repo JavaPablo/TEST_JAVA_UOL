@@ -36,6 +36,11 @@ Antes de começar, você precisa ter instalado em sua máquina:
     ```bash
     mvn install
 
+Também poderá ser executado o comando, abaixo e ter acesso a aplicação e o banco de dados no docker!
+    ```bash
+    docker compose up
+
+
 Como Executar:
 
     ```bash
