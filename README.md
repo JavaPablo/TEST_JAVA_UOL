@@ -41,7 +41,7 @@ Como Executar:
     ```bash
     mvn spring-boot:run
 
-A aplicação estará disponível em http://localhost:8080.
+A aplicação estará disponível em http://localhost:8080/swagger-ui/index.html#.
 
 3. Endpoints
 
@@ -51,7 +51,6 @@ Gestão de Caixas de E-mail:
     POST /emails: Cria uma nova caixa de e-mail.
     GET /emails/{id}: Retorna uma caixa de e-mail específica.
     PUT /emails/{id}: Atualiza uma caixa de e-mail existente.
-    DELETE /emails/{id}: Remove uma caixa de e-mail.
 
 Gestão de Pastas:
 
@@ -59,7 +58,6 @@ Gestão de Pastas:
     POST /folders: Cria uma nova pasta.
     GET /folders/{id}: Retorna uma pasta específica.
     PUT /folders/{id}: Atualiza uma pasta existente.
-    DELETE /folders/{id}: Remove uma pasta.
 
 Gestão de Mensagens
 
@@ -67,7 +65,6 @@ Gestão de Mensagens
     POST /messages: Cria uma nova mensagem.
     GET /messages/{id}: Retorna uma mensagem específica.
     PUT /messages/{id}: Atualiza uma mensagem existente.
-    DELETE /messages/{id}: Remove uma mensagem.
 
 4. Contribuição
 
